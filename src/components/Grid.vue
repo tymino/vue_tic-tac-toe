@@ -34,8 +34,8 @@ export default {
   width: 400px;
   height: 400px;
   margin: 0 auto;
-  background: #415e7c;
-  border: 6px solid #364d64;
+  background: var(--color-cell-background);
+  border: 4px solid var(--color-cell-background);
   border-radius: 10px;
   color: #fff;
 }

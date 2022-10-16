@@ -46,11 +46,15 @@ export default {
 :root {
   --color-player1: hsl(42, 83%, 60%);
   --color-player2: hsl(161, 64%, 71%);
-  --color-grid-background: hsl(228, 4%, 52%);
-  --color-cell-background: hsl(227, 5%, 38%);
+  --color-grid-background: hsl(227, 5%, 38%);
+  --color-cell-background: hsl(228, 4%, 52%);
 
   --color-global-black: hsl(0, 0%, 0%);
   --color-global-white: hsl(0, 0%, 100%);
+}
+
+body {
+  background: var(--color-grid-background);
 }
 
 #app {

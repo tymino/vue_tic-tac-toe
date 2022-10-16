@@ -1,5 +1,18 @@
 <template>
-  <div class="cell">{{ cellValue }}</div>
+  <div class="cell">
+    <img
+      v-if="cellValue == 1"
+      class="cell_icon"
+      src="../assets/circle.png"
+      alt="circle"
+    />
+    <img
+      v-else-if="cellValue == 2"
+      class="cell_icon"
+      src="../assets/close.png"
+      alt="circle"
+    />
+  </div>
 </template>
 
 <script>
@@ -19,17 +32,27 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #2c3e50;
+  margin: 2px;
+
+  border: 2px solid var(--color-grid-background);
   border-radius: 10px;
-  box-shadow: 2px 3px 4px #152330;
+  box-shadow: 2px 3px 4px var(--color-global-black);
+
   font-family: Helvetica;
   font-weight: bold;
   font-size: 4em;
+
   user-select: none;
   cursor: pointer;
 
   &:active {
     box-shadow: none;
+    border: 2px solid var(--color-cell-background);
   }
+}
+
+.cell_icon {
+  width: 70%;
+  height: auto;
 }
 </style>
