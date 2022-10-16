@@ -1,5 +1,7 @@
 <template>
-  <h1 class="title">tic-tac-toe</h1>
+  <h1 class="title">
+    <strong>tic</strong>-<strong>tac</strong>-<strong>toe</strong>
+  </h1>
   <Grid :gameGrid="gameGrid" @click="pressedCell" />
   <Button />
 </template>
@@ -42,16 +44,31 @@ export default {
 
 <style lang="scss">
 :root {
-  --color-primary: #7F8189
-  --color-secondary: #5D5F66
-  --color-header: #fff
+  --color-player1: hsl(42, 83%, 60%);
+  --color-player2: hsl(161, 64%, 71%);
+  --color-grid-background: hsl(228, 4%, 52%);
+  --color-cell-background: hsl(227, 5%, 38%);
+
+  --color-global-black: hsl(0, 0%, 0%);
+  --color-global-white: hsl(0, 0%, 100%);
 }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
+}
+
+.title {
+  color: var(--color-grid-background);
+
+  & > strong:nth-child(2n) {
+    color: var(--color-player2);
+  }
+  & > strong:nth-child(2n + 1) {
+    color: var(--color-player1);
+  }
 }
 </style>
