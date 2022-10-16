@@ -1,6 +1,6 @@
 <template>
   <h1 class="title">tic-tac-toe</h1>
-  <Grid />
+  <Grid :gameGrid="gameGrid" @click="pressedCell" />
   <Button />
 </template>
 
@@ -16,8 +16,26 @@ export default {
   },
   data() {
     return {
-      gameGrid: [0, 0, 0, 0, 0, 0, 0, 0],
+      gameGrid: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      step: 1,
     };
+  },
+  methods: {
+    pressedCell({ target }) {
+      const isTargetClick = target.classList.contains('cell');
+
+      if (isTargetClick) {
+        const cellIndex = target.dataset.index;
+
+        this.gameGrid[cellIndex] = this.step;
+
+        if (this.step === 2) {
+          this.step = 1;
+        } else {
+          this.step = 2;
+        }
+      }
+    },
   },
 };
 </script>
