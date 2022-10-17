@@ -33,10 +33,11 @@ export default {
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   width: 400px;
   height: 400px;
-  margin: 0 auto;
+  margin: 30px auto;
   background: var(--color-cell-background);
   border: 4px solid var(--color-cell-background);
   border-radius: 10px;
+  box-shadow: 2px 3px 4px var(--color-global-black);
   color: #fff;
 }
 </style>

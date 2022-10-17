@@ -1,33 +1,41 @@
 <template>
-  <h1 class="title">
-    <strong>tic</strong>-<strong>tac</strong>-<strong>toe</strong>
-  </h1>
-  <Grid :gameGrid="gameGrid" @click="pressedCell" />
-  <Button />
+  <Title />
+  <Grid :gameGrid="gameGrid" @mousedown="pressedCell" />
+  <Button buttonName="reset" />
 </template>
 
 <script>
 import Grid from '@/components/Grid.vue';
 import Button from '@/components/Button.vue';
+import Title from '@/components/Title.vue';
 
 export default {
   name: 'app',
   components: {
     Grid,
     Button,
+    Title,
   },
   data() {
     return {
       gameGrid: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       step: 1,
+      isEndGame: false,
     };
   },
   methods: {
-    pressedCell({ target }) {
-      const isTargetClick = target.classList.contains('cell');
+    pressedCell(event) {
+      const isLeftClickMouse = event.button === 0;
+      const isTargetClick = event.target.classList.contains('cell');
+      const isVisitedCell = !event.target.classList.contains('active');
 
-      if (isTargetClick) {
-        const cellIndex = target.dataset.index;
+      const boolGroup =
+        !this.isEndGame && isLeftClickMouse && isTargetClick && isVisitedCell;
+
+      if (boolGroup) {
+        const cellIndex = event.target.dataset.index;
+
+        event.target.classList.add('active');
 
         this.gameGrid[cellIndex] = this.step;
 
@@ -58,21 +66,11 @@ body {
 }
 
 #app {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  margin-top: 60px;
-}
-
-.title {
-  color: var(--color-grid-background);
-
-  & > strong:nth-child(2n) {
-    color: var(--color-player2);
-  }
-  & > strong:nth-child(2n + 1) {
-    color: var(--color-player1);
-  }
 }
 </style>

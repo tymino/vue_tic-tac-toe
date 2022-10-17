@@ -45,9 +45,10 @@ export default {
   user-select: none;
   cursor: pointer;
 
-  &:active {
-    box-shadow: none;
+  &.active {
+    box-shadow: 1px 2px 3px inset var(--color-global-black);
     border: 2px solid var(--color-cell-background);
+    cursor: default;
   }
 }
 
