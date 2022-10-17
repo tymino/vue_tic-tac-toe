@@ -1,5 +1,5 @@
 <template>
-  <div class="cell">
+  <div class="cell" ref="cell">
     <img
       v-if="cellValue == 1"
       class="cell_icon"
@@ -22,6 +22,18 @@ export default {
     cellValue: {
       type: Number,
       default: 0,
+    },
+  },
+  watch: {
+    cellValue() {
+      const refCellBlock = this.$refs.cell.classList;
+
+      if (this.cellValue === 0) {
+        refCellBlock.remove('active');
+      }
+      if (this.cellValue > 0) {
+        refCellBlock.add('active');
+      }
     },
   },
 };

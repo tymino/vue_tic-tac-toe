@@ -1,7 +1,7 @@
 <template>
   <Title />
   <Grid :gameGrid="gameGrid" @mousedown="pressedCell" />
-  <Button buttonName="reset" />
+  <Button buttonName="reset" @click="resetGame" />
 </template>
 
 <script>
@@ -35,8 +35,6 @@ export default {
       if (boolGroup) {
         const cellIndex = event.target.dataset.index;
 
-        event.target.classList.add('active');
-
         this.gameGrid[cellIndex] = this.step;
 
         if (this.step === 2) {
@@ -45,6 +43,9 @@ export default {
           this.step = 2;
         }
       }
+    },
+    resetGame() {
+      this.gameGrid = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     },
   },
 };
