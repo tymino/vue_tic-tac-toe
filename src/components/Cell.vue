@@ -5,12 +5,14 @@
       class="cell_icon"
       src="../assets/circle.png"
       alt="circle"
+      draggable="false"
     />
     <img
       v-else-if="cellValue == 2"
       class="cell_icon"
       src="../assets/close.png"
       alt="circle"
+      draggable="false"
     />
   </div>
 </template>

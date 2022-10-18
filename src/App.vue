@@ -24,28 +24,52 @@ export default {
     };
   },
   methods: {
+    checkLine(cellA, cellB, cellC) {
+      return (
+        this.gameGrid[cellA] === this.step &&
+        this.gameGrid[cellB] === this.step &&
+        this.gameGrid[cellC] === this.step
+      );
+    },
+    checkWinner() {
+      const isWinLineHorUp = this.checkLine(0, 1, 2);
+      const isWinLineHorMid = this.checkLine(3, 4, 5);
+      const isWinLineHorBot = this.checkLine(6, 7, 8);
+
+      const booleanGroup = isWinLineHorUp || isWinLineHorMid || isWinLineHorBot;
+
+      if (booleanGroup) {
+        this.isEndGame = true;
+      } else {
+        this.nextStep();
+      }
+    },
+    nextStep() {
+      if (this.step === 2) {
+        this.step = 1;
+      } else {
+        this.step = 2;
+      }
+    },
     pressedCell(event) {
       const isLeftClickMouse = event.button === 0;
       const isTargetClick = event.target.classList.contains('cell');
       const isVisitedCell = !event.target.classList.contains('active');
 
-      const boolGroup =
+      const booleanGroup =
         !this.isEndGame && isLeftClickMouse && isTargetClick && isVisitedCell;
 
-      if (boolGroup) {
+      if (booleanGroup) {
         const cellIndex = event.target.dataset.index;
-
         this.gameGrid[cellIndex] = this.step;
 
-        if (this.step === 2) {
-          this.step = 1;
-        } else {
-          this.step = 2;
-        }
+        this.checkWinner();
       }
     },
     resetGame() {
       this.gameGrid = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      this.step = 1;
+      this.isEndGame = false;
     },
   },
 };
