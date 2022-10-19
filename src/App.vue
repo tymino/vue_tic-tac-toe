@@ -40,7 +40,7 @@ export default {
       const isWinLineHorBot = this.checkLine(6, 7, 8);
 
       const isWinLineVertLeft = this.checkLine(0, 3, 6);
-      const isWinLineVertMid = this.checkLine(3, 4, 7);
+      const isWinLineVertMid = this.checkLine(1, 4, 7);
       const isWinLineVertRight = this.checkLine(2, 5, 8);
 
       const isWinLineDiagLR = this.checkLine(0, 4, 8);

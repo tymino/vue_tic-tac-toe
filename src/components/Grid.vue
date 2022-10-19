@@ -40,4 +40,17 @@ export default {
   box-shadow: 2px 3px 4px var(--color-global-black);
   color: #fff;
 }
+
+@media (max-width: 450px) {
+  .grid {
+    width: 300px;
+    height: 300px;
+  }
+}
+@media (max-width: 320px) {
+  .grid {
+    width: 250px;
+    height: 250px;
+  }
+}
 </style>
