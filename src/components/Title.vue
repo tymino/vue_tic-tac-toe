@@ -18,7 +18,7 @@ export default {
   border: 2px solid var(--color-cell-background);
   border-radius: 6px;
   box-shadow: 1px 2px 2px inset var(--color-global-black);
-  font-size: 2rem;
+  font-size: 2.2rem;
   text-transform: uppercase;
   user-select: none;
 

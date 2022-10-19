@@ -11,7 +11,7 @@
       v-else-if="cellValue == 2"
       class="cell_icon"
       src="../assets/close.png"
-      alt="circle"
+      alt="close"
       draggable="false"
     />
   </div>

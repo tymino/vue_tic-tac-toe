@@ -1,5 +1,6 @@
 <template>
   <Title />
+  <StepBoard :currentStep="step" :isWinner="isEndGame" />
   <Grid :gameGrid="gameGrid" @mousedown="pressedCell" />
   <Button buttonName="reset" @click="resetGame" />
 </template>
@@ -7,6 +8,7 @@
 <script>
 import Grid from '@/components/Grid.vue';
 import Button from '@/components/Button.vue';
+import StepBoard from '@/components/StepBoard.vue';
 import Title from '@/components/Title.vue';
 
 export default {
@@ -14,6 +16,7 @@ export default {
   components: {
     Grid,
     Button,
+    StepBoard,
     Title,
   },
   data() {
@@ -36,7 +39,22 @@ export default {
       const isWinLineHorMid = this.checkLine(3, 4, 5);
       const isWinLineHorBot = this.checkLine(6, 7, 8);
 
-      const booleanGroup = isWinLineHorUp || isWinLineHorMid || isWinLineHorBot;
+      const isWinLineVertLeft = this.checkLine(0, 3, 6);
+      const isWinLineVertMid = this.checkLine(3, 4, 7);
+      const isWinLineVertRight = this.checkLine(2, 5, 8);
+
+      const isWinLineDiagLR = this.checkLine(0, 4, 8);
+      const isWinLineDiagRL = this.checkLine(2, 4, 6);
+
+      const booleanGroup =
+        isWinLineHorUp ||
+        isWinLineHorMid ||
+        isWinLineHorBot ||
+        isWinLineVertLeft ||
+        isWinLineVertMid ||
+        isWinLineVertRight ||
+        isWinLineDiagLR ||
+        isWinLineDiagRL;
 
       if (booleanGroup) {
         this.isEndGame = true;
@@ -93,6 +111,7 @@ body {
 #app {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin-top: 50px;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
